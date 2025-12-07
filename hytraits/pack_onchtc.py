@@ -15,7 +15,7 @@ if __name__ == '__main__':
     project_dir = Path(__file__).parent.parent/args['project']
     io_dir = project_dir/'io'
     package_dir = Path(__file__).parent.parent/f'{args["analysis"]}-{str(args["config_idx"]).zfill(5)}'
-    staging_dir = Path(f'/staging/{args["username"]}/{args["project"]}/fromnode')    
+    staging_dir = Path(f'/staging/{args["username"]}/{args["project"]}/fromchtc')    
 
     package_dir.mkdir(parents=True, exist_ok=True)
     sub_dirs = ['model', 'deploy', 'eda']
@@ -27,7 +27,6 @@ if __name__ == '__main__':
                 tar.add(source_dir, arcname=source_dir.stem) 
             print(f'Created: {targz_file}')
 
-    staging_dir = Path(f'/staging/{args["username"]}/{args["project"]}/fromnode')
     targz_file = staging_dir/f'{package_dir.stem}.tar.gz'
     with tarfile.open(targz_file, 'w:gz') as tar: 
                 tar.add(package_dir, arcname=package_dir.stem) 
